@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 10 (optional)</title>
+    <link rel="stylesheet" href="css/common.css" />
+  </head>
+  <body>
+    <p><a href="index.html">Go back</a></p>
+
+    <div id="controls">
+      <input type="number" min="1" max="100" step="1" id="box-amount" />
+      <button type="button" data-create>Create</button>
+      <button type="button" data-destroy>Destroy</button>
+    </div>
+    <div id="boxes"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+  const createBtn = document.querySelector('[data-create]');
+  const destroyBtn = document.querySelector('[data-destroy]');
+  const boxesContainer = document.getElementById('boxes');
+
+  createBtn.addEventListener('click', function() {
+    const amount = document.getElementById('box-amount').value;
+    createBoxes(amount);
+  });
+
+  destroyBtn.addEventListener('click', destroyBoxes);
+
+  function createBoxes(amount) {
+    let boxesMarkup = '';
+    let initialSize = 30;
+    for (let i = 0; i < amount; i++) {
+      const size = initialSize + i * 10;
+      boxesMarkup += `<div style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()};"></div>`;
+    }
+    boxesContainer.insertAdjacentHTML('beforeend', boxesMarkup);
+  }
+
+  function destroyBoxes() {
+    boxesContainer.innerHTML = '';
+  }
+
+  function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+  }
+});
+
+    </script>
+  </body>
+</html>
