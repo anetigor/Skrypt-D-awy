@@ -1,6 +1,6 @@
 
   const input = document.getElementById('validation-input');
-  const requiredLength = parseInt(input.dataset.length, 10);  // Użycie dataset dla lepszej czytelności
+  const requiredLength = parseInt(input.dataset.length, 10); 
 
   function validateInput() {
     if (input.value.length === requiredLength) {
